@@ -1,0 +1,14 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+span {
+  background-color: lightblue;
+}
+
+.link {
+  margin-right: 30px;
+}
