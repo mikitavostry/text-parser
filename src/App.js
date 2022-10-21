@@ -12,9 +12,9 @@ function App() {
   const sentences = textParser(text, indexes);
   return (
     <div className="App">
-      <div className="links">
+      <div>
         {sentences.map((sentence, index) => (
-          <a className="link" href={Object.keys(sentence)[0]} key={index}>
+          <a href={Object.keys(sentence)[0]} key={index}>
             {parse(sentence[Object.keys(sentence)[0]])}
           </a>
         ))}
