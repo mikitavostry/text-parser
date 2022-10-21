@@ -1,7 +1,6 @@
-import { useState, useEffect } from "react";
-import "./App.css";
 import parse from "html-react-parser";
 import { textParser } from "./textParser";
+import "./App.css";
 
 function App() {
   const text = "zdanie peirwsze. zdanie drugie. zdanie trzecie.";
