@@ -1,13 +1,13 @@
 export const textParser = (text, ranges) => {
   if (text.slice(-1) !== ".") {
-    // add '.' in the end of string
+    // add '.' at the end of string
     text += ".";
   }
   ranges.sort((a, b) => a[0] - b[0]); // sort of ranges array by 1st value
-  const sentences = [];
+  const sentences = []; // tos tore key: value pairs where key is sentence and value is formatted sentence
   let index = 0; // current in ranges array
-  let buffer = "";
-  let flag = true; // flag to check if <span> tag is closed at the end
+  let buffer = ""; // to store string befor '. '
+  let flag = true; // flag to check if <span> tag is closed at the end of sentence
   let sentenceStart = 0; // start index of new sentence
   for (let i = 0; i < text.length; i++) {
     if (i === ranges[index][0]) {
@@ -22,21 +22,21 @@ export const textParser = (text, ranges) => {
     buffer += text[i];
 
     if (text[i] === ".") {
-      const sentence = text.slice(sentenceStart, i);
+      // if we are at the end of sentence
+      const sentence = text.slice(sentenceStart, i); // extracting not formatted sentence from text
       if (flag) {
         sentences.push({
           [sentence]: buffer,
         });
-        buffer = "";
+        buffer = ""; // starting new sentence when <span> tag is closed
       } else {
-        buffer += "</span>";
+        buffer += "</span>"; // when <span> tag is not closed we add </span> at the end of sentence
         sentences.push({
           [sentence]: buffer,
         });
-        buffer = "<span>";
+        buffer = "<span>"; // when <span> tag is not closed we add <span> at the begging of next sentence
       }
-      sentenceStart = i + 2;
-      i++;
+      sentenceStart = i + 2; // skipping ". " in links
     }
   }
   return sentences;
