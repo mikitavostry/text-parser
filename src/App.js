@@ -9,13 +9,13 @@ function App() {
     [10, 20],
     [30, 34],
   ];
-  const sentences = textParser(text, indexes);
+  const formattedLinks = textParser(text, indexes);
   return (
     <div className="App">
       <div>
-        {sentences.map((sentence, index) => (
-          <a href={Object.keys(sentence)[0]} key={index}>
-            {parse(sentence[Object.keys(sentence)[0]])}
+        {formattedLinks.map((sentence, index) => (
+          <a href={sentence.link} key={index}>
+            {parse(sentence.formatted)}
           </a>
         ))}
       </div>

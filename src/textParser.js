@@ -4,7 +4,7 @@ export const textParser = (text, ranges) => {
     text += ".";
   }
   ranges.sort((a, b) => a[0] - b[0]); // sort of ranges array by 1st value
-  const sentences = []; // to store key: value pairs where key is sentence and value is formatted sentence
+  const sentences = []; // to store objects with two keys: link and formatted sentence
   let index = 0; // current index of ranges array
   let buffer = ""; // to store every new sentence
   let flag = true; // flag to check if <span> tag is closed at the end of a sentence
@@ -26,13 +26,15 @@ export const textParser = (text, ranges) => {
       const sentence = text.slice(sentenceStart, i); // extracting not formatted sentence from text
       if (flag) {
         sentences.push({
-          [sentence]: buffer,
+          link: sentence,
+          formatted: buffer,
         });
         buffer = ""; // starting a new sentence when <span> tag is closed
       } else {
         buffer += "</span>"; // when <span> tag is not closed we add </span> at the end of sentence
         sentences.push({
-          [sentence]: buffer,
+          link: sentence,
+          formatted: buffer,
         });
         buffer = "<span>"; // when <span> tag is not closed we add <span> at the beginning of next sentence
       }
