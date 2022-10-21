@@ -10,7 +10,7 @@ describe("Parser function", () => {
     const output = [
       { Hello: "He<span>llo.</span>" },
       {
-        "My name is Mikita": "<span>My </span>nam<span>e </span>is Mikita.",
+        "My name is Mikita": "<span> My </span>nam<span>e </span>is Mikita.",
       },
     ];
     expect(JSON.stringify(textParser(text, indexes))).toEqual(
@@ -26,7 +26,7 @@ describe("Parser function", () => {
     const output = [
       { Hello: "He<span>llo.</span>" },
       {
-        "My name is Mikita": "<span>My </span>nam<span>e is Mikita.</span>",
+        "My name is Mikita": "<span> My </span>nam<span>e is Mikita.</span>",
       },
     ];
     expect(JSON.stringify(textParser(text, indexes))).toEqual(
@@ -41,7 +41,7 @@ describe("Parser function", () => {
     ];
     const output = [
       { Hello: "Hello." },
-      { "My name is Mikita": "My name is Mikita." },
+      { "My name is Mikita": " My name is Mikita." },
     ];
     expect(JSON.stringify(textParser(text, indexes))).toEqual(
       JSON.stringify(output)
@@ -56,7 +56,7 @@ describe("Parser function", () => {
     const output = [
       { Hello: "He<span>llo.</span>" },
       {
-        "My name is Mikita": "<span>My </span>nam<span>e </span>is Mikita.",
+        "My name is Mikita": "<span> My </span>nam<span>e </span>is Mikita.",
       },
     ];
     expect(JSON.stringify(textParser(text, indexes))).toEqual(
@@ -72,10 +72,10 @@ describe("Parser function", () => {
     const output = [
       { Hello: "He<span>llo.</span>" },
       {
-        "My name is Mikita": "<span>My </span>nam<span>e is Mikita.</span>",
+        "My name is Mikita": "<span> My </span>nam<span>e is Mikita.</span>",
       },
-      { Hello: "<span>Hello.</span>" },
-      { Hello: "<span>H</span>ello." },
+      { Hello: "<span> Hello.</span>" },
+      { Hello: "<span> H</span>ello." },
     ];
     expect(JSON.stringify(textParser(text, indexes))).toEqual(
       JSON.stringify(output)
@@ -90,10 +90,10 @@ describe("Parser function", () => {
     const output = [
       { Hello: "He<span>llo.</span>" },
       {
-        "My name is Mikita": "<span>My </span>nam<span>e is Mikita.</span>",
+        "My name is Mikita": "<span> My </span>nam<span>e is Mikita.</span>",
       },
-      { Hello: "<span>Hello.</span>" },
-      { Hello: "<span>H</span>ello." },
+      { Hello: "<span> Hello.</span>" },
+      { Hello: "<span> H</span>ello." },
     ];
     expect(JSON.stringify(textParser(text, indexes))).toEqual(
       JSON.stringify(output)
