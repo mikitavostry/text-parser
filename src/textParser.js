@@ -3,7 +3,7 @@ export const textParser = (text, ranges) => {
     // add '.' at the end of string
     text += ".";
   }
-  ranges.sort((a, b) => a[0] - b[0]); // sort of ranges array by 1st value
+  ranges.sort((a, b) => a[0] - b[0]); // sorting ranges array by 1st value
   const sentences = []; // to store objects with two keys: link and formatted sentence
   let index = 0; // current index of ranges array
   let buffer = ""; // to store every new sentence
@@ -13,8 +13,7 @@ export const textParser = (text, ranges) => {
     if (i === ranges[index][0]) {
       buffer += "<span>";
       flag = false;
-    }
-    if (i === ranges[index][1]) {
+    } else if (i === ranges[index][1]) {
       buffer += "</span>";
       flag = true;
       if (index < ranges.length - 1) index++; // increase index of ranges array by 1
